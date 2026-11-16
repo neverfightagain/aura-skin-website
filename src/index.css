@@ -1,0 +1,11 @@
+@import 'tailwindcss';
+
+@theme {
+  --font-serif: 'Cormorant Garamond', serif;
+  --font-sans: 'Plus Jakarta Sans', sans-serif;
+  --font-sans-serif: 'Plus Jakarta Sans', sans-serif;
+}
+
+body {
+  @apply bg-[#fbf9f5] text-[#1a1816] font-sans antialiased;
+}
