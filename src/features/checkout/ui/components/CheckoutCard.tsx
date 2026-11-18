@@ -1,5 +1,5 @@
-import type {CartItem} from "../../products/types";
-import {getTotalPrice} from "../../../shared/hooks/getTotalPrice.ts";
+import type {CartItem} from "../../../products/types";
+import {getTotalPrice} from "../../../../shared/functions/getTotalPrice.ts";
 
 type Props = {
     item: CartItem

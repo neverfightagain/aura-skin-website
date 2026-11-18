@@ -2,7 +2,7 @@ import {useEffect, useState} from 'react'
 import {useCartStore} from "../../model/useCartStore.ts";
 import type {CartItem} from "../../../products/types";
 import { motion } from "framer-motion";
-import {getTotalPrice} from "../../../../shared/hooks/getTotalPrice.ts";
+import {getTotalPrice} from "../../../../shared/functions/getTotalPrice.ts";
 
 type Props = {
   product: CartItem,

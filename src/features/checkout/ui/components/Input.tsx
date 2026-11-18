@@ -1,6 +1,6 @@
 import type {HTMLInputTypeAttribute} from "react";
 import type {UseFormRegister} from "react-hook-form";
-import type {Checkout} from "../validation/orderValidation.ts";
+import type {Checkout} from "../../validation/orderValidation.ts";
 import { motion } from 'motion/react'
 
 type Props = {

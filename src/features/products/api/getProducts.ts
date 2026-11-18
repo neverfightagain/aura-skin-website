@@ -1,8 +1,18 @@
-import type { ProductResponse} from "../types";
+import type { ProductResponse } from "../types";
 import {productApi} from "../../../shared/api/productApi.ts";
 
-export const getProducts = async (): Promise<ProductResponse> => {
-  const response = await productApi.get<ProductResponse>(`/products`);
+const CATEGORIES = ['beauty', 'fragrances', 'skin-care']
 
-  return response.data;
+export const getProducts = async (): Promise<ProductResponse> => {
+  const responses = await Promise.all(
+      CATEGORIES.map((category) =>
+        productApi.get<ProductResponse>(`/products/category/${category}`)
+      )
+  )
+
+  const products = responses.flatMap((res) => res.data.products)
+  const total = responses.reduce((sum, res) => sum + res.data.total, 0);
+
+  return { products, total }
+
 }

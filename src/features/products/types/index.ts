@@ -1,8 +1,6 @@
 export type ProductResponse = {
   products: ProductItem[];
   total: number;
-  skip: number;
-  limit: number;
 }
 
 export type ProductItem = {

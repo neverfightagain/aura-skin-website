@@ -9,7 +9,7 @@ const Header = () => {
       <div className='max-w-7xl mx-auto px-4 sm:px-8 md:px-12 h-16 sm:h-20 flex items-center justify-between'>
         <div className='flex-1'></div>
 
-        <div className='flex-shrink-0 text-center'>
+        <div className='shrink-0 text-center'>
           <Link
             to='/'
             className='font-serif text-xl sm:text-2xl md:text-3xl tracking-[0.16em] sm:tracking-[0.2em] text-[#1a1816] uppercase hover:opacity-80 transition-opacity'

@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { motion } from "motion/react";
-import type { Response } from "../types";
-import CongratEmoji from "../../../assets/CongratEmoji.gif";
+import type { Response } from "../../types";
+import CongratEmoji from "../../../../assets/CongratEmoji.gif";
 
 type Props = {
   order: NonNullable<Response>;
