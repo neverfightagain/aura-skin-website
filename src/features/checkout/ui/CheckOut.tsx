@@ -4,7 +4,7 @@ import { useForm } from 'react-hook-form'
 import {type Checkout, checkoutValidation} from "../validation/orderValidation.ts";
 import {zodResolver} from "@hookform/resolvers/zod";
 import { Link } from "react-router-dom";
-import { Loader2 } from "lucide-react";
+import {Loader2, MoveLeftIcon} from "lucide-react";
 import MainTitle from "../../../shared/ui/MainTitle.tsx";
 import Input from "./components/Input.tsx";
 import CheckoutCard from "./components/CheckoutCard.tsx";
@@ -159,22 +159,10 @@ const CheckOut = () => {
          >
            <Link
              to='/cart'
-             className='inline-block text-xs tracking-[0.16em] uppercase font-sans text-stone-500 hover:text-stone-900 transition-colors'
+             className='group inline-flex flex-col items-start gap-1.5 text-xs tracking-[0.2em] uppercase font-sans text-stone-500 hover:text-stone-900 transition-colors'
            >
-             <svg
-                 xmlns="http://www.w3.org/2000/svg"
-                 width="24"
-                 height="24"
-                 viewBox="0 0 24 24"
-                 fill="none"
-                 stroke="currentColor"
-                 strokeWidth="1"
-                 strokeLinecap="round"
-                 strokeLinejoin="round"
-             >
-               <path d="M2 12H22" />
-               <path d="M6 8L2 12L6 16" />
-             </svg> Return to cart
+             <MoveLeftIcon className='w-5 h-5 stroke-[1.1] transition-transform duration-300 group-hover:-translate-x-1' />
+             <span>Return to cart</span>
            </Link>
          </motion.div>
        </form>

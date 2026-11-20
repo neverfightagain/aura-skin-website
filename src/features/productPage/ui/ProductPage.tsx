@@ -125,13 +125,13 @@ const ProductPage = () => {
 
     return (
         <motion.section
-            className='max-w-7xl mx-auto px-6 sm:px-8 md:px-12 py-8 sm:py-12'
+            className='max-w-7xl mx-auto px-6 sm:px-8 md:px-12 py-5 sm:py-8'
             variants={listVariants}
             initial="hidden"
             animate="visible"
         >
             <motion.div
-                className='mb-8 sm:mb-10'
+                className='mb-5 sm:mb-7'
                 variants={itemVariants}
             >
                 <Link
@@ -143,57 +143,59 @@ const ProductPage = () => {
                 </Link>
             </motion.div>
 
-            <div className='grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-start'>
+            <div className='grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-14 items-start'>
                 <div className='lg:col-span-6'>
-                    <motion.div
-                        ref={carouselRef}
-                        onScroll={handleCarouselScroll}
-                        variants={itemVariants}
-                        className='flex w-full overflow-x-auto snap-x snap-mandatory scroll-smooth scrollbar-none [&::-webkit-scrollbar]:hidden'
-                    >
-                        {images.map((img, index) => (
-                            <div
-                                key={img + index}
-                                className='w-full shrink-0 snap-center aspect-4/5 bg-[#ece7df] flex items-center justify-center overflow-hidden'
-                            >
-                                <img
-                                    className='w-full h-full object-cover'
-                                    src={img}
-                                    onError={(e) => {
-                                        e.currentTarget.src = FALLBACK_IMG;
-                                    }}
-                                    alt={`${product.title} ${index + 1}`}
-                                />
-                            </div>
-                        ))}
-                    </motion.div>
-
-                    {images.length > 1 && (
-                        <div className='flex items-center justify-center gap-3 mt-4'>
+                    <div className='w-full max-w-sm lg:max-w-[380px] xl:max-w-[420px] mx-auto'>
+                        <motion.div
+                            ref={carouselRef}
+                            onScroll={handleCarouselScroll}
+                            variants={itemVariants}
+                            className='flex w-full overflow-x-auto snap-x snap-mandatory scroll-smooth scrollbar-none [&::-webkit-scrollbar]:hidden'
+                        >
                             {images.map((img, index) => (
-                                <motion.button
-                                    variants={itemVariants}
+                                <div
                                     key={img + index}
-                                    type='button'
-                                    onClick={() => scrollToImage(index)}
-                                    className={`w-14 sm:w-16 aspect-4/5 bg-[#ece7df] overflow-hidden border cursor-pointer transition-opacity ${
-                                        activeImg === index
-                                            ? 'border-[#1a1816]'
-                                            : 'border-transparent opacity-60 hover:opacity-100'
-                                    }`}
+                                    className='w-full shrink-0 snap-center aspect-4/5 bg-[#ece7df] flex items-center justify-center overflow-hidden'
                                 >
                                     <img
+                                        className='w-full h-full object-cover'
                                         src={img}
                                         onError={(e) => {
                                             e.currentTarget.src = FALLBACK_IMG;
                                         }}
-                                        alt={`${product.title} thumbnail ${index + 1}`}
-                                        className='w-full h-full object-cover'
+                                        alt={`${product.title} ${index + 1}`}
                                     />
-                                </motion.button>
+                                </div>
                             ))}
-                        </div>
-                    )}
+                        </motion.div>
+
+                        {images.length > 1 && (
+                            <div className='flex items-center justify-center gap-3 mt-3'>
+                                {images.map((img, index) => (
+                                    <motion.button
+                                        variants={itemVariants}
+                                        key={img + index}
+                                        type='button'
+                                        onClick={() => scrollToImage(index)}
+                                        className={`w-12 sm:w-14 aspect-4/5 bg-[#ece7df] overflow-hidden border cursor-pointer transition-opacity ${
+                                            activeImg === index
+                                                ? 'border-[#1a1816]'
+                                                : 'border-transparent opacity-60 hover:opacity-100'
+                                        }`}
+                                    >
+                                        <img
+                                            src={img}
+                                            onError={(e) => {
+                                                e.currentTarget.src = FALLBACK_IMG;
+                                            }}
+                                            alt={`${product.title} thumbnail ${index + 1}`}
+                                            className='w-full h-full object-cover'
+                                        />
+                                    </motion.button>
+                                ))}
+                            </div>
+                        )}
+                    </div>
                 </div>
 
                 <div className='lg:col-span-6 flex flex-col'>

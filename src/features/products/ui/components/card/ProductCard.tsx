@@ -65,7 +65,7 @@ const ProductCard = ({product, index}: Props) => {
           {product.title}
         </h3>
 
-        <div className='flex items-center justify-between mt-1 text-xs font-sans'>
+        <div className='flex items-center justify-between mt-1 h-5 text-xs font-sans'>
           <div className='flex items-baseline gap-1.5 text-stone-600'>
             {product.discountPercentage === 0 ? (
               <span>${totalPrice}</span>
@@ -98,7 +98,7 @@ const ProductCard = ({product, index}: Props) => {
           ) : (
             <button
               onClick={() => addItem(product)}
-              className='text-xs uppercase tracking-wider font-sans text-stone-800 hover:text-stone-500 cursor-pointer transition-colors'
+              className='h-5 flex items-center text-xs uppercase tracking-wider font-sans text-stone-800 hover:text-stone-500 cursor-pointer transition-colors'
             >
               Add to bag
             </button>
