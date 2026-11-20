@@ -1,4 +1,4 @@
-import {type SortOption, useFilterStore} from "./model/useFilterStore.ts";
+import {type SortOption, useFilterStore} from "../model/useFilterStore.ts";
 import {motion} from "motion/react";
 import { useRef, useEffect } from "react";
 

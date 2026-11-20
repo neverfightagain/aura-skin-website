@@ -51,11 +51,40 @@ const CheckOut = () => {
   }
 
 
+  const listVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.06,
+      },
+    },
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 14 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.45,
+        ease: [0.22, 1, 0.36, 1] as const,
+      },
+    },
+  };
+
  return (
-   <section className='pb-16'>
-     <MainTitle
-       text={'checkout'}
-     />
+   <motion.section
+     variants={listVariants}
+     initial='hidden'
+     animate='visible'
+     className='pb-16'
+   >
+     <motion.div variants={itemVariants}>
+       <MainTitle
+         text={'checkout'}
+       />
+     </motion.div>
 
      <main className='grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 max-w-7xl mx-auto px-4 sm:px-8 md:px-12'>
        <form
@@ -65,10 +94,8 @@ const CheckOut = () => {
          className='lg:col-span-8 flex flex-col gap-10 sm:gap-12'
        >
          <motion.div
+             variants={itemVariants}
              className='flex flex-col gap-5'
-             initial={{opacity: 0, y: 50}}
-             animate={{opacity: 1, y: 0}}
-             transition={{duration: 0.5}}
          >
            <h2 className='font-serif text-xl sm:text-2xl tracking-[0.08em] text-[#1a1816] uppercase font-normal text-left pb-3 border-b border-[#d8d2c8]'>
              contact information
@@ -85,10 +112,8 @@ const CheckOut = () => {
          </motion.div>
 
          <motion.div
+             variants={itemVariants}
              className='flex flex-col gap-5'
-             initial={{opacity: 0, y: 50}}
-             animate={{opacity: 1, y: 0}}
-             transition={{duration: 0.5}}
          >
            <h2 className='font-serif text-xl sm:text-2xl tracking-[0.08em] text-[#1a1816] uppercase font-normal text-left pb-3 border-b border-[#d8d2c8]'>
              shipping details
@@ -129,25 +154,34 @@ const CheckOut = () => {
          </motion.div>
 
          <motion.div
+             variants={itemVariants}
              className='pt-2'
-             initial={{opacity: 0, y: 50}}
-             animate={{opacity: 1, y: 0}}
-             transition={{duration: 0.5}}
          >
            <Link
              to='/cart'
              className='inline-block text-xs tracking-[0.16em] uppercase font-sans text-stone-500 hover:text-stone-900 transition-colors'
            >
-             ← Return to cart
+             <svg
+                 xmlns="http://www.w3.org/2000/svg"
+                 width="24"
+                 height="24"
+                 viewBox="0 0 24 24"
+                 fill="none"
+                 stroke="currentColor"
+                 strokeWidth="1"
+                 strokeLinecap="round"
+                 strokeLinejoin="round"
+             >
+               <path d="M2 12H22" />
+               <path d="M6 8L2 12L6 16" />
+             </svg> Return to cart
            </Link>
          </motion.div>
        </form>
 
        <motion.aside
+           variants={itemVariants}
            className='lg:col-span-4 bg-[#ede6dc] p-6 sm:p-8 h-fit lg:sticky top-28'
-           initial={{opacity: 0, y: 50}}
-           animate={{opacity: 1, y: 0}}
-           transition={{duration: 0.5}}
        >
          <h2 className='font-serif text-xl sm:text-2xl tracking-[0.08em] text-[#1a1816] uppercase font-normal text-left mb-6 sm:mb-8'>
            ORDER SUMMARY
@@ -211,7 +245,7 @@ const CheckOut = () => {
      {createdOrder && (
        <OrderModal order={createdOrder} />
      )}
-   </section>
+     </motion.section>
  )
 }
 

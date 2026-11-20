@@ -65,8 +65,6 @@ const Cart = () => {
             </div>
           </div>
 
-          {/*TODO: poloska*/}
-
           <div className='mt-8 flex justify-between items-center text-xs tracking-wider uppercase font-sans text-stone-900 font-semibold'>
             <span>TOTAL:</span>
             <span>${totalPrice.toFixed(2)}</span>

@@ -20,7 +20,7 @@ const Header = () => {
 
         <div className='flex-1 flex items-center justify-end'>
           <Link
-            to='cart'
+            to='/cart'
             className='relative py-0.5 text-xs tracking-[0.12em] sm:tracking-[0.16em] uppercase text-stone-800 font-sans transition-colors after:content-[""] after:absolute after:bottom-0 after:left-0 after:w-0 hover:after:w-full after:h-[1px] after:bg-stone-800 after:transition-all after:duration-300'
           >
             Cart({totalItems})

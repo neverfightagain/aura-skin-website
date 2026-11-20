@@ -1,15 +1,30 @@
-import type {ProductItem} from "../../types";
+import type {ProductItem} from "../../../types";
 import {useState} from "react";
-import { useCartStore } from "../../../cart/model/useCartStore.ts";
-import { motion } from "framer-motion";
+import { useCartStore } from "../../../../cart/model/useCartStore.ts";
+import { motion } from "motion/react";
+import {Link} from "react-router-dom";
 
 type Props = {
   product: ProductItem;
+  index: number;
 }
 
 const FALLBACK_IMG = 'https://placehold.co/400x400/222/999?text=No+Photo'
 
-const ProductCard = ({product}: Props) => {
+const cardVariants = {
+  hidden: { opacity: 0, y: 14 },
+  visible: (col: number) => ({
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.45,
+      delay: col * 0.06,
+      ease: [0.22, 1, 0.36, 1] as const,
+    },
+  }),
+};
+
+const ProductCard = ({product, index}: Props) => {
 
   const [cardImg, setCardImg] = useState<string>(product.images[0]);
   const totalPrice = (product.price * (1 - product.discountPercentage / 100)).toFixed(2);
@@ -22,12 +37,16 @@ const ProductCard = ({product}: Props) => {
   return (
     <motion.article
       className='flex flex-col group'
-      initial={{opacity: 0, y: 50}}
-      whileInView={{opacity: 1, y: 0}}
-      transition={{ duration: 0.5}}
-      viewport={{once: true, amount: 0.3}}
+      variants={cardVariants}
+      custom={index % 3}
+      initial='hidden'
+      whileInView='visible'
+      viewport={{once: true, amount: 0.2}}
     >
-      <div className='w-full aspect-[4/5] bg-[#ece7df] overflow-hidden flex items-center justify-center'>
+      <Link
+          to={`/product/${product.id}`}
+      >
+      <div className='w-full aspect-4/5 bg-[#ece7df] overflow-hidden flex items-center justify-center'>
         <img
           src={cardImg}
           onError={() => setCardImg(FALLBACK_IMG)}
@@ -36,6 +55,7 @@ const ProductCard = ({product}: Props) => {
           className='w-full h-full object-cover transition-transform duration-500 group-hover:scale-105'
         />
       </div>
+      </Link>
 
       <div className='mt-4 flex flex-col'>
         <h3

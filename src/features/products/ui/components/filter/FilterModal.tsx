@@ -1,8 +1,8 @@
 import {type CategoryOption, type SortOption, useFilterStore} from "./model/useFilterStore.ts";
 import {motion, AnimatePresence} from 'motion/react'
-import Input from "./Input.tsx";
-import FilterButton from "./FilterButton.tsx";
-import SortDropdown from "./SortDropown.tsx";
+import Input from "./components/Input.tsx";
+import FilterButton from "./components/FilterButton.tsx";
+import SortDropdown from "./components/SortDropown.tsx";
 import { useState, useEffect } from "react";
 import { X, ChevronDown } from "lucide-react";
 
@@ -66,7 +66,7 @@ const FilterModal = ({closeModal}: Props) => {
                 exit={{
                     x: 500
                 }}
-                className='w-full max-w-sm sm:max-w-md h-full bg-[#fbf9f5] border-l border-[#d8d2c8] flex flex-col'
+                className='w-full max-w-md sm:max-w-xl h-full bg-[#fbf9f5] border-l border-[#d8d2c8] flex flex-col'
                 onClick={(e) => e.stopPropagation()}
             >
 
@@ -77,11 +77,11 @@ const FilterModal = ({closeModal}: Props) => {
                     <button
                         type='button'
                         onClick={() => closeModal(false)}
-                        className='flex items-center gap-1.5 text-[11px] uppercase tracking-[0.16em] text-stone-700 hover:text-[#1a1816] transition-colors cursor-pointer'
+                        className='inline-flex items-center gap-1.5 text-[11px] leading-none uppercase tracking-[0.16em] text-stone-700 hover:text-[#1a1816] transition-colors cursor-pointer'
                         aria-label='Close filters'
                     >
-                        <span>close</span>
-                        <X className='w-3.5 h-3.5 stroke-[1.5]' />
+                        <span className='leading-none'>close</span>
+                        <X className='w-3.5 h-3.5 stroke-[1.5] shrink-0 -translate-y-[1.5px]' />
                     </button>
                 </div>
 
